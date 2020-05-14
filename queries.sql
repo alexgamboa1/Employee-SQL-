@@ -52,7 +52,51 @@ ORDER BY emp.emp_no;
 SELECT * 
 FROM employees 
 WHERE first_name = 'Hercules' AND last_name LIKE 'B%';
-	
+
+-- List all employees in the Sales department, including their employee number, last name, first name, and department name.
+SELECT * FROM departments; 
+
+SELECT emp.emp_no, 
+	emp.last_name, 
+	emp.first_name, 
+	d.dept_name
+FROM employees AS emp
+INNER JOIN dept_emp AS de
+	ON (emp.emp_no = de.emp_no)
+INNER JOIN departments AS d
+	ON (d.dept_no = de.dept_no)
+WHERE dept_name = 'Sales'
+ORDER BY emp.emp_no;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
