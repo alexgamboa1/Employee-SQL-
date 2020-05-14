@@ -48,7 +48,10 @@ INNER JOIN departments AS d
 	ON (d.dept_no = de.dept_no)
 ORDER BY emp.emp_no;
 	
-
+-- List all employees whose first name is "Hercules" and last names begin with "B."
+SELECT * 
+FROM employees 
+WHERE first_name = 'Hercules' AND last_name LIKE 'B%';
 	
 
 
