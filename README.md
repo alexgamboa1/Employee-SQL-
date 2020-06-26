@@ -30,12 +30,57 @@ CREATE TABLE employees (
 ``` 
 # Data Exploration
 ### Query
-Once the tables are created for each of the CSV files it is now time to import the information into each specific table. 
+Once the tables are created for each of the CSV files it is now time to import the information into each specific table. Next we will be exploring the database using a **query** to request information from different database tables to generate a result we are looking for. 
 
-Next we will be exploring the database using a **query** to request information from different database tables to generate a result we are looking for. 
+### 1. Basic Selection
+In SQL, query statements are comprised of a combination of clauses with the most basic type making use of `SELECT` to choose columns to display and `FROM` to identify the data source. The use of `*` denotes selecting all data.
 
+```
+select *
+from employees
+```
 
+### 2. Querying with Joins
+Selecting data from two sources requires the use of the `JOIN` clause in conjunction with `FROM` and must also specify the common key from each table using `ON`. Here, instead of querying all data, we will choose select columns from each data source.
 
+```
+SELECT emp.emp_no, 
+	emp.last_name, 
+	emp.first_name, 
+	emp.gender, 
+	sal.salary
+FROM employees AS emp
+	LEFT JOIN salaries AS sal
+	ON emp.emp_no = sal.emp_no
+ORDER BY emp.emp_no;
+```
 
+### 3. Filtering Data with WHERE
+When queried data needs to filtered to specific criteria, the `WHERE` clause is used to isolate the relevant information. In this example, both datetime format and logical operators are recogized by SQL to select all records from 1986.
 
+```
+SELECT * 
+FROM employees 
+WHERE hire_date BETWEEN '1986-01-01' AND '1986-12-31';
+```
+
+### 4. Querying String Patterns
+In cases where queries require a looser definition of data to pull, SQL can also make use of Regular Expression to parse strings and return similar results. The use of `LIKE 'B%'` in the following example will return all employees named "Hercules" with last name starting with "B".
+
+```
+SELECT * 
+FROM employees 
+WHERE first_name = 'Hercules' AND last_name LIKE 'B%';
+```
+
+### 5. Aggregate Functions
+
+Querying aggregate functions such as `SUM`, `MIN`, `MAX`, `AVG`, and `COUNT` is also supported by SQL. Here, we also introduce `GROUP BY` and `ORDER BY` to combine alike data and display the results in a sorted order. Using `2` is a short-hand for the second argument in the `SELECT` statement.
+
+```
+SELECT last_name, COUNT(last_name) 
+FROM employees
+GROUP BY last_name
+ORDER BY COUNT(last_name) DESC; 
+```
 
