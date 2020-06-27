@@ -39,6 +39,7 @@ In SQL, query statements are comprised of a combination of clauses with the most
 select *
 from employees
 ```
+![](https://github.com/alexgamboa1/Employee-SQL-/blob/master/ReadMe_images/SQL-Select-All.png)
 
 ### 2. Querying with Joins
 Selecting data from two sources requires the use of the `JOIN` clause in conjunction with `FROM` and must also specify the common key from each table using `ON`. Here, instead of querying all data, we will choose select columns from each data source.
@@ -54,6 +55,7 @@ FROM employees AS emp
 	ON emp.emp_no = sal.emp_no
 ORDER BY emp.emp_no;
 ```
+![](https://github.com/alexgamboa1/Employee-SQL-/blob/master/ReadMe_images/SQL-QuerywithJoins.png)
 
 ### 3. Filtering Data with WHERE
 When queried data needs to filtered to specific criteria, the `WHERE` clause is used to isolate the relevant information. In this example, both datetime format and logical operators are recogized by SQL to select all records from 1986.
@@ -63,6 +65,7 @@ SELECT *
 FROM employees 
 WHERE hire_date BETWEEN '1986-01-01' AND '1986-12-31';
 ```
+![](https://github.com/alexgamboa1/Employee-SQL-/blob/master/ReadMe_images/SQL-Filtering%20Data%20with%20Where.png)
 
 ### 4. Querying String Patterns
 In cases where queries require a looser definition of data to pull, SQL can also make use of Regular Expression to parse strings and return similar results. The use of `LIKE 'B%'` in the following example will return all employees named "Hercules" with last name starting with "B".
@@ -72,6 +75,7 @@ SELECT *
 FROM employees 
 WHERE first_name = 'Hercules' AND last_name LIKE 'B%';
 ```
+![](https://github.com/alexgamboa1/Employee-SQL-/blob/master/ReadMe_images/SQL-Query%20String%20Patterns.png)
 
 ### 5. Aggregate Functions
 
@@ -83,4 +87,4 @@ FROM employees
 GROUP BY last_name
 ORDER BY COUNT(last_name) DESC; 
 ```
-
+![](https://github.com/alexgamboa1/Employee-SQL-/blob/master/ReadMe_images/SQL-Aggregate%20Functions.png)
