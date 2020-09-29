@@ -32,7 +32,7 @@ CREATE TABLE employees (
 ### Query
 Once the tables are created for each of the CSV files it is now time to import the information into each specific table. Next we will be exploring the database using a **query** to request information from different database tables to generate a result we are looking for. 
 
-### 1. Basic Selection
+### Basic Selection
 In SQL, query statements are comprised of a combination of clauses with the most basic type making use of `SELECT` to choose columns to display and `FROM` to identify the data source. The use of `*` denotes selecting all data.
 
 ```
@@ -41,7 +41,7 @@ from employees
 ```
 ![](https://github.com/alexgamboa1/Employee-SQL-/blob/master/ReadMe_images/SQL-Select-All.png)
 
-### 2. Querying with Joins
+### Querying with Joins
 Selecting data from two sources requires the use of the `JOIN` clause in conjunction with `FROM` and must also specify the common key from each table using `ON`. Here, instead of querying all data, we will choose select columns from each data source.
 
 ```
@@ -57,7 +57,7 @@ ORDER BY emp.emp_no;
 ```
 ![](https://github.com/alexgamboa1/Employee-SQL-/blob/master/ReadMe_images/SQL-QuerywithJoins.png)
 
-### 3. Filtering Data with WHERE
+### Filtering Data with WHERE
 When queried data needs to filtered to specific criteria, the `WHERE` clause is used to isolate the relevant information. In this example, both datetime format and logical operators are recogized by SQL to select all records from 1986.
 
 ```
@@ -67,7 +67,41 @@ WHERE hire_date BETWEEN '1986-01-01' AND '1986-12-31';
 ```
 ![](https://github.com/alexgamboa1/Employee-SQL-/blob/master/ReadMe_images/SQL-Filtering%20Data%20with%20Where.png)
 
-### 4. Querying String Patterns
+### Using Join to Combine Multiple Data Sources. 
+List the manager of each department with the following information: 
+Find the department number, department name, the manager's employee number, last name, first name, and the start and end date of employment. 
+```
+SELECT dm.dept_no,
+	d.dept_name, 
+	dm.emp_no,
+	emp.last_name,
+	emp.first_name, 
+	dm.from_date, 
+	dm.to_date
+FROM dept_manager AS dm
+INNER JOIN departments as d
+	ON (dm.dept_no = d.dept_no)
+INNER JOIN employees as emp
+	ON (dm.emp_no = emp.emp_no)
+ORDER BY dm.fromdate;
+```
+
+
+Find the Department of each employee: 
+```
+SELECT  e.emp_no,
+        e.last_name,
+        e.first_name,
+        d.dept_name
+FROM employees AS e
+    INNER JOIN dept_emp AS de
+        ON (e.emp_no = de.emp_no)
+    INNER JOIN departments AS d
+        ON (de.dept_no = d.dept_no)
+ORDER BY e.emp_no;
+```
+
+### Querying String Patterns
 In cases where queries require a looser definition of data to pull, SQL can also make use of Regular Expression to parse strings and return similar results. The use of `LIKE 'B%'` in the following example will return all employees named "Hercules" with last name starting with "B".
 
 ```
@@ -77,7 +111,7 @@ WHERE first_name = 'Hercules' AND last_name LIKE 'B%';
 ```
 ![](https://github.com/alexgamboa1/Employee-SQL-/blob/master/ReadMe_images/SQL-Query%20String%20Patterns.png)
 
-### 5. Aggregate Functions
+### Aggregate Functions
 
 Querying aggregate functions such as `SUM`, `MIN`, `MAX`, `AVG`, and `COUNT` is also supported by SQL. Here, we also introduce `GROUP BY` and `ORDER BY` to combine alike data and display the results in a sorted order. Using `2` is a short-hand for the second argument in the `SELECT` statement.
 
@@ -87,4 +121,8 @@ FROM employees
 GROUP BY last_name
 ORDER BY COUNT(last_name) DESC; 
 ```
-![](https://github.com/alexgamboa1/Employee-SQL-/blob/master/ReadMe_images/SQL-Aggregate%20Functions.png)
+![](https://github.com/alexgamboa1/Employee-SQL-/blob/master/ReadMe_images/SQL-Aggregate%20Functions.png
+
+### 
+
+
