@@ -143,3 +143,25 @@ ORDER BY e.emp_no;
 ```
 ![](https://github.com/alexgamboa1/Employee-SQL-/blob/master/ReadMe_images/emp_in_sales.png)
 
+Using the 'Where' Clause to include two departments. Return the Employees in the Sales and Development Department. 
+```
+SELECT  e.emp_no,
+        e.last_name,
+        e.first_name,
+        d.dept_name
+FROM employees AS e
+    INNER JOIN dept_emp AS de
+        ON (e.emp_no = de.emp_no)
+    INNER JOIN departments AS d
+        ON (de.dept_no = d.dept_no)
+WHERE d.dept_name IN ('Sales', 'Development')
+ORDER BY e.emp_no;
+```
+
+Find the frequency of similar last names within the employees data. 
+```
+SELECT last_name, COUNT(last_name)
+FROM employees
+GROUP BY last_name
+ORDER BY COUNT(last_name) DESC;
+```
