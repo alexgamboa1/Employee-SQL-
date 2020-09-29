@@ -85,6 +85,7 @@ INNER JOIN employees as emp
 	ON (dm.emp_no = emp.emp_no)
 ORDER BY dm.fromdate;
 ```
+![](https://github.com/alexgamboa1/Employee-SQL-/blob/master/ReadMe_images/dept.manager.png)
 
 
 Find the Department of each employee: 
@@ -100,6 +101,7 @@ FROM employees AS e
         ON (de.dept_no = d.dept_no)
 ORDER BY e.emp_no;
 ```
+![](https://github.com/alexgamboa1/Employee-SQL-/blob/master/ReadMe_images/dept%20of%20each%20employee.png)
 
 ### Querying String Patterns
 In cases where queries require a looser definition of data to pull, SQL can also make use of Regular Expression to parse strings and return similar results. The use of `LIKE 'B%'` in the following example will return all employees named "Hercules" with last name starting with "B".
@@ -139,5 +141,5 @@ FROM employees AS e
 WHERE d.dept_name = 'Sales'
 ORDER BY e.emp_no;
 ```
-
+![](https://github.com/alexgamboa1/Employee-SQL-/blob/master/ReadMe_images/emp_in_sales.png)
 
