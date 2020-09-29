@@ -157,6 +157,7 @@ FROM employees AS e
 WHERE d.dept_name IN ('Sales', 'Development')
 ORDER BY e.emp_no;
 ```
+![](https://github.com/alexgamboa1/Employee-SQL-/blob/master/ReadMe_images/sales%20and%20dev%20dept.png)
 
 Find the frequency of similar last names within the employees data. 
 ```
@@ -165,3 +166,4 @@ FROM employees
 GROUP BY last_name
 ORDER BY COUNT(last_name) DESC;
 ```
+![](https://github.com/alexgamboa1/Employee-SQL-/blob/master/ReadMe_images/count_similar_ln.png)
